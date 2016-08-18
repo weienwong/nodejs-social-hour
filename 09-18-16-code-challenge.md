@@ -20,7 +20,7 @@ The API limits how many issues are returned. Use the API's paging feature to pul
 
 
 #### Nightmare Level
-OAuth and pull issues from a private repository. _I'd recommend creating a personal private repository and adding issues for this challenge, this way you do not expose private information._
+Pull issues from a private repository. You will need to be authenticated in order to do this. There are a couple ways to do this, the trickiest is OAuth. You will need admin repository privileges. I would recommend creating a personal private repository and adding issues for this challenge, _this way you do not expose private information._
 
 
 ### Done
