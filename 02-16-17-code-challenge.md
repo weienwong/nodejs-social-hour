@@ -63,11 +63,11 @@ Command Line Options
 
 Now let's get down to it! At this point the solutions are going to be up to you and will probably require some research.
 
-Since we are building a log parsing cli tool we will need an option for our tool to tell us where our logs are located. This level you need to add the `file` parameter to your script. How you choose to accomplish this is up to you, there is more than one way.
+Since we are building a log parsing cli tool we will need an option for our tool to tell us where our logs are located. This level you need to add the `file` parameter to your script. How you choose to accomplish this is up to you, there is more than one way. You will also find an `access_log.zip` file in the repository. This contains a large file of apache access logs taken from [here](http://www.monitorware.com/en/logsamples/apache.php).
 
 The test to pass this level is you should be able to run this command.
 
-`cli-challenge --file=/var/log/system.log`
+`cli-challenge --file=/path/to/access.log`
 
 And recieve the line count.
 
@@ -81,9 +81,13 @@ Progress Bar
 Now if we have a very large log file this could take awhile. So let's add some communication to our users of our parsing progress. This level you need to add a progress bar that displays on the command line while parsing takes place.
 
 ### Level 5
+
+Filter to find and return all 404 records.
+
+### Level 6
 Color Ouput
 
-Exactly that! Color your output.
+Exactly that! Color your output. Maybe make 404's red and 200's green!
 
 ### Nightmare
 Date Range
@@ -92,6 +96,7 @@ Allow your script to accept a date range with a `start` and `end` argument. And 
 
 The test to pass this level is you should be able to run this command.
 
-`cli-challenge --file=/var/log/system.log --start=00:00:12 02-16-2017 --end=00:00:20 02-16-2017`
+`cli-challenge --file=/path/to/access.log --start=00:00:12 02-16-2017 --end=00:00:20 02-16-2017`
 
 We should see all the logs between 12pm and 8pm.
+
