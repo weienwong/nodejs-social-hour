@@ -37,11 +37,21 @@ if (program.file !== null) {
 
   rl.on('line', (line) => {    
     
-    // lineCount += 1
+    if (line.includes(http404)) {
+      http404Count += 1
+    } else if (line.includes(http200)) {
+      http200Count += 1
+    }
+
     bar.tick(line.length)
   })
 
   rl.on('close', () => {
+
+    console.log('\n')
+    console.log(chalk.red(http404 + " count: " + http404Count))
+    console.log(chalk.green(http200 + " count: " + http200Count))
+    
     process.exit(0)
   })
 
