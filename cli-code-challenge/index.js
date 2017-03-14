@@ -5,8 +5,11 @@ const fs = require('fs')
 const ProgressBar = require('progress')
 const chalk = require('chalk')
 const program = require('commander')
-const moment = require('moment')
 
+/**
+ * Parses command line arguments
+ * In this case stores the filename as a command line argument
+ */
 program
   .version('0.0.1')
   .option('-f, --file [filename]', 'Add file [filename]', null)
@@ -14,6 +17,10 @@ program
 
 
 if (program.file !== null) {
+
+  /**
+   * Will parse the file if a proper value has been passed in
+   */
   
   let fileSize = fs.statSync(program.file).size
   let lineCount = 0
@@ -33,7 +40,7 @@ if (program.file !== null) {
     total: fileSize,
     clear: true
   }
-  let bar = new ProgressBar('reading [:bar] :percent', barOpts)
+  let bar = new ProgressBar('reading [:bar] [:percent]', barOpts)
 
   rl.on('line', (line) => {    
     
@@ -43,14 +50,19 @@ if (program.file !== null) {
       http200Count += 1
     }
 
+    lineCount++
     bar.tick(line.length)
+
   })
 
   rl.on('close', () => {
 
-    console.log('\n')
-    console.log(chalk.red(http404 + " count: " + http404Count))
-    console.log(chalk.green(http200 + " count: " + http200Count))
+    bar.terminate()
+    
+    console.log(chalk.cyan('Finished reading log file!'))
+    console.log(chalk.cyan(`Total lines read ${lineCount}`))
+    console.log(chalk.red(`${http404} count: ${http404Count}`))
+    console.log(chalk.green(`${http200} count: ${http200Count}`))
     
     process.exit(0)
   })
